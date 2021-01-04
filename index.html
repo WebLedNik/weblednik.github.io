@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>weatherApp</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="page">
+			<main class="main _container">
+				<div class="main__content">
+					<div class="main__wind">
+						<span class="js-windSpeed"></span></br>
+						<span class="js-windOrientation"></span>
+					</div>
+					<div class="main__weather">
+						<div class="main__icon-weather">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="261.746"
+								height="147.232" viewBox="0 0 261.746 147.232">
+								<defs>
+									<linearGradient id="linear-gradient" x1="0.558" y1="0.293" x2="0.5" y2="1.914"
+										gradientUnits="objectBoundingBox">
+										<stop offset="0" stop-color="#fff" />
+										<stop offset="1" stop-color="#c5c5c5" />
+									</linearGradient>
+								</defs>
+								<path id="Icon_metro-cloud" data-name="Icon metro-cloud"
+									d="M264.316,112.279a44.6,44.6,0,0,0-34-43.321A60.8,60.8,0,0,0,121.759,32.832,34.152,34.152,0,0,0,60.927,58.576a49.543,49.543,0,1,0-8.837,98.3l167.748,0a44.577,44.577,0,0,0,44.478-44.59Z"
+									transform="translate(-2.571 -9.64)" fill="url(#linear-gradient)" />
+							</svg>
+							<span class="snow snow_1"></span>
+							<span class="snow snow_2"></span>
+							<span class="snow snow_3"></span>
+							<span class="snow snow_4"></span>
+						</div>
+						<div class="main__temperature">
+							<span class="js-teperature"></span>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer class="footer _container">
+				<span class="js-time"></span>
+				<span class="js-city"></span>
+			</footer>
+		</div>
+	</div>
+	<script src="main.js"></script>
+</body>
+
+</html>
