@@ -26,54 +26,52 @@ const orientationWind = (windDeg) => {
 	}
 };
 
-const WeatherAndIP = () => {
-	const fetchIP = fetch('https://ipapi.co/json/').then(response => response.json());//Получаем данные об IP в JSON
+const kelvinToCelsius = (temp) => {
+	const absoluteZero = 273.15;
+	temp = Math.round(temp - absoluteZero);
+	return temp = temp == 0 ? Math.abs(temp) : temp;
+};
 
-	fetchIP.then(jsonIP => {
-		const lat = jsonIP.latitude;//Широта
-		const lon = jsonIP.longitude;//Долгота
+const timeNow = () => {
+	const localTime = new Date().toLocaleTimeString().slice(0, -3);
+	time.textContent = localTime;
+};
+
+timeNow();
+
+async function WeatherAndIP() {
+	try {
+		const urlIP = 'https://ipapi.co/json/';
+
+		const responseIP = await fetch(urlIP);
+		const dataIP = await responseIP.json();
+
+		city.textContent = dataIP.city;
+
+		const lat = dataIP.latitude;//Широта
+		const lon = dataIP.longitude;//Долгота
 		const keyAPI = '1a30a7f5e74893c084ade287b64f785a';//Ключ
-		const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${keyAPI}`;
-		const fetchWeather = fetch(url).then(response => response.json());//Получаем данные о погоде в JSON
 
-		city.textContent = `${jsonIP.city}`;
+		const urlWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${keyAPI}`;
 
-		fetchWeather.then(jsonWeather => {
-			const windDeg = orientationWind(jsonWeather.wind.deg);
-			const weatherTemperature = kelvinToCelsius(jsonWeather.main.temp);
+		const responseWeather = await fetch(urlWeather);
+		const dataWeather = await responseWeather.json();
 
-			windSpeed.textContent = `Скорость ветра: ${jsonWeather.wind.speed} м/с`;
-			windOrientation.textContent = `Направлнеие ветра: ${windDeg}`;
-			temperature.textContent = weatherTemperature + String.fromCharCode(176) + 'C';
-		});
-	});
+		const windDeg = orientationWind(dataWeather.wind.deg);
+		const weatherTemperature = kelvinToCelsius(dataWeather.main.temp);
+
+		windSpeed.textContent = `Скорость ветра: ${dataWeather.wind.speed} м/с`;
+		windOrientation.textContent = `Направлнеие ветра: ${windDeg}`;
+		temperature.textContent = weatherTemperature + String.fromCharCode(176) + 'C';
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 WeatherAndIP();
 
-const kelvinToCelsius = (temp) => {
-	console.log(temp);
-	const absoluteZero = 273.15;
-	temp = Math.round(temp - absoluteZero);
-	if (temp == 0) {
-		temp = Math.abs(temp);
-	};
-	return temp;
-};
-
-const timeNow = () => {
-	const date = new Date;
-	let hours = date.getHours();
-	let minutes = date.getMinutes();
-	time.textContent = `${hours}:${minutes}`;
-};
-
 setInterval(() => {
 	timeNow();
 }, 1000);
-
-setInterval(() => {
-	WeatherAndIP();
-}, 1800000);
 
 
