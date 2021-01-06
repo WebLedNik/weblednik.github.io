@@ -1,8 +1,16 @@
+const pageLoad = document.querySelector('.js-onload');
 const windSpeed = document.querySelector('.js-windSpeed');
 const windOrientation = document.querySelector('.js-windOrientation');
 const temperature = document.querySelector('.js-teperature');
 const time = document.querySelector('.js-time');
 const city = document.querySelector('.js-city');
+console.log(pageLoad);
+
+window.onload = () => {
+	setTimeout(() => {
+		pageLoad.classList.add('hide');
+	}, 500);
+};
 
 //Определяем направление ветра
 const orientationWind = (windDeg) => {

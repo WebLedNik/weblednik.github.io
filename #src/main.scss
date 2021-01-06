@@ -14,6 +14,7 @@ body{
 .wrapper {
 	width: 100%;
 	height: 100vh;
+	position: relative;
 }
 .page {
 	position: absolute;
@@ -137,4 +138,26 @@ body{
 @keyframes snow_4{
 	0%{background-position:  60%  -100%;opacity: 1;}
 	100%{background-position:  60% 100%;opacity: 0.5;}
+}
+.page-onload {
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+	background-color: rgb(10, 126, 204);
+	transition: all 0.3s linear;
+	// .page-onload__content
+
+	&__content {
+		font-size: 60px;
+	}
+}
+.hide{
+	opacity: 0;
 }
