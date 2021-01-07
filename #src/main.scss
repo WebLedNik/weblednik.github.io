@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
 
 body{
 	overflow: hidden;
@@ -40,11 +41,13 @@ body{
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			padding: 0 50px;
 		}
 
 		// .main__wind
 
 		&__wind {
+			flex:0 1 40%;
 			font-size: 30px;
 			letter-spacing: 0.04em;
 			line-height: 60px;
@@ -54,9 +57,9 @@ body{
 		// .main__weather
 
 		&__weather {
+			flex:0 1 40%;
 			display: flex;
 			align-items: center;
-			padding-left: 200px;
 		}
 
 		// .main__icon-weather
@@ -155,9 +158,13 @@ body{
 	// .page-onload__content
 
 	&__content {
+		font-family: 'Montserrat';
 		font-size: 60px;
+		letter-spacing: 0rem;
+		font-weight: 600;
 	}
 }
 .hide{
 	opacity: 0;
+	z-index: -1;
 }

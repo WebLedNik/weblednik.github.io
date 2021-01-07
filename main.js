@@ -64,7 +64,7 @@ async function WeatherAndIP() {
 
 		const responseWeather = await fetch(urlWeather);
 		const dataWeather = await responseWeather.json();
-
+		console.log(dataWeather);
 		const windDeg = orientationWind(dataWeather.wind.deg);
 		const weatherTemperature = kelvinToCelsius(dataWeather.main.temp);
 
