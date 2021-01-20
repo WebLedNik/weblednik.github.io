@@ -5,13 +5,6 @@ const weatherApp = () => {
 	const temperature = document.querySelector('.js-teperature');
 	const time = document.querySelector('.js-time');
 	const city = document.querySelector('.js-city');
-	console.log(pageLoad);
-
-	window.onload = () => {
-		setTimeout(() => {
-			pageLoad.classList.add('hide');
-		}, 500);
-	};
 
 	//Определяем направление ветра
 	const orientationWind = (windDeg) => {
@@ -63,13 +56,14 @@ const weatherApp = () => {
 
 			const responseWeather = await fetch(urlWeather);
 			const dataWeather = await responseWeather.json();
-			console.log(dataWeather);
 			const windDeg = orientationWind(dataWeather.wind.deg);
 			const weatherTemperature = kelvinToCelsius(dataWeather.main.temp);
 
 			windSpeed.textContent = `Скорость ветра: ${dataWeather.wind.speed} м/с`;
 			windOrientation.textContent = `Направлнеие ветра: ${windDeg}`;
 			temperature.textContent = weatherTemperature + String.fromCharCode(176) + 'C';
+
+			pageLoad.classList.add('hide');
 		} catch (err) {
 			console.log(err);
 		}
